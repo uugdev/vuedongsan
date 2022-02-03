@@ -1,7 +1,12 @@
 <template>
+  <!-- class명을 조건부로 넣으려면 {클래스명 : 조건} -->
+  <!-- isOpen이 true가 되면 class에 end 부착 -->
+  <!-- <div class="start" :class="{ end : isOpen }"> -->
 
-  <Modal @closeModal="isOpen = false" :oneroom="oneroom" :clicked="clicked" :isOpen="isOpen"/>
-  
+  <transition name="fade">
+    <Modal @closeModal="isOpen = false" :oneroom="oneroom" :clicked="clicked" :isOpen="isOpen"/>
+  </transition>
+  <!-- </div> -->
   <div class="menu">
     <a v-for="a in menu" :key="a"> {{a}} </a>
   </div>
@@ -131,5 +136,37 @@ div{
   padding: 10px;
 }
 
+.start {
+  opacity: 0;
+  transition: all 1s;
+}
+
+.end {
+  opacity: 1;
+}
+
+.fade-enter-from {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  transition: all 1s;
+}
+
+.fade-enter-to {
+  opacity: 1;
+}
+
+.fade-leave-from {
+  opacity: 1;
+}
+
+.fade-leave-active {
+  transition: all 1s;
+}
+
+.fade-leave-to {
+  opacity: 0;
+}
 
 </style>
