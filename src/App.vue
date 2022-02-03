@@ -1,6 +1,6 @@
 <template>
 
-  <Modal :oneroom="oneroom" :clicked="clicked" :isOpen="isOpen"/>
+  <Modal @closeModal="isOpen = false" :oneroom="oneroom" :clicked="clicked" :isOpen="isOpen"/>
   
   <div class="menu">
     <a v-for="a in menu" :key="a"> {{a}} </a>
@@ -8,7 +8,7 @@
   
   <Discount />
 
-  <Card :oneroom="oneroom[i]" v-for="(a, i) in oneroom" :key="a"/>
+  <Card @openModal="isOpen = true; clicked = $event" :oneroom="oneroom[i]" v-for="(a, i) in oneroom" :key="a"/>
 
   <!-- <div>
     <img :src="oneroom[a].image" class="room-img">
