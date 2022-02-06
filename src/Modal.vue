@@ -23,7 +23,7 @@ export default {
     name : 'Modal',
     data() {
       return {
-        month : 1, //문자를 입력 받을거라면 초기값을 문자로 설정해야함
+        month : 3, //문자를 입력 받을거라면 초기값을 문자로 설정해야함
       }
     },
     watch : {
@@ -40,9 +40,15 @@ export default {
         //사용자가 문자를 입력하면 경고창 띄우고 숫자 1로 바꿔버리기
         if(isNaN(a) == true) { //false일 경우 숫자, 글자일 경우 true
           alert('문자는 입력할 수 없습니다')
-          this.month = 1;
+          this.month = 3;
         }
 },
+    },
+    beforeUpdate() {
+      if(this.month == 2) {
+        alert('3이상의 숫자만 입력 가능합니다')
+        this.month = 3;
+      }
     },
     props : {
         oneroom : Object,

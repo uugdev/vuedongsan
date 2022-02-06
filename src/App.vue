@@ -11,7 +11,11 @@
     <a v-for="a in menu" :key="a"> {{a}} </a>
   </div>
   
-  <Discount />
+  <Discount v-if="showDiscount == true" :percent="percent"/>
+
+  <button @click="priceSort">가격순정렬</button>
+  <button @click="sortBack">되돌리기</button>
+  <button @click="priceReSort">가격역순정렬</button>
 
   <Card @openModal="isOpen = true; clicked = $event" :oneroom="oneroom[i]" v-for="(a, i) in oneroom" :key="a"/>
 
@@ -52,6 +56,9 @@ export default {
     return {
       //데이터는 object자료로 저장
       // {자료이름: 자료내용}
+      percent : 30,
+      showDiscount : true,
+      oneroomOrigin : [...data],
       clicked : 0,
       oneroom : data, 
       isOpen : false,
@@ -62,6 +69,36 @@ export default {
   },
 
   methods : {
+    priceSort() {
+      this.oneroom.sort(function(a,b) {
+        return a.price - b.price;
+      })
+    },
+    priceReSort() {
+      this.oneroom.sort(function(a,b) {
+        return b.price - a.price;
+      })
+    },
+    sortBack() {
+      this.oneroom = [...this.oneroomOrigin];
+      //array의 shallow copy를 만들어서 집어넣어주세요.
+    },
+  },
+    //lifecycle hook을 활용
+    mounted() { //컴포넌트가 html에 장착돼서 화면에 보이는 상태
+      //mount되고 나서 실행
+      // setTimeout(()=> {
+      //  this.showDiscount = false; 
+      // } , 2000);
+
+      setInterval(()=> {
+          this.percent--;
+      }, 1000);
+
+
+    },
+
+
     // increase0() {
     //   this.report[0] += 1;
     //   //함수 안에서 데이터 사용할 때 무조건 this.써야함
@@ -74,9 +111,7 @@ export default {
     //   this.report[2] += 1;
     //   //함수 안에서 데이터 사용할 때 무조건 this.써야함
     // }
-  },
-
-  components : {
+    components : {
     Discount : Discount,
     Modal : Modal,
     Card : Card,
