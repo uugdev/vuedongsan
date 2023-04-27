@@ -23,19 +23,19 @@
     <img :src="oneroom[a].image" class="room-img">
     <h4 @click="isOpen = true">{{oneroom[0].title}}</h4>
     <p>{{oneroom[0].price}}</p>
-    <button @click="increase0">허위매물 신고</button> <span>신고수 : {{report[0]}} </span> 
+    <button @click="increase0">허위 매물 신고</button> <span>신고수 : {{report[0]}} </span> 
   </div> -->
   <!-- <div> 
     <img :src="oneroom[1].image" class="room-img">
     <h4 @click="isOpen = true">{{oneroom[1].title}}</h4>
     <p>{{oneroom[1].price}}</p>
-    <button @click="increase1">허위매물 신고</button> <span>신고수 : {{report[1]}} </span>
+    <button @click="increase1">허위 매물 신고</button> <span>신고수 : {{report[1]}} </span>
   </div>
   <div>
     <img :src="oneroom[2].image" class="room-img">
     <h4 @click="isOpen = true">{{oneroom[2].title}}</h4>
     <p>{{oneroom[2].price}}</p>
-    <button @click="increase2">허위매물 신고</button> <span>신고수 : {{report[2]}} </span>
+    <button @click="increase2">허위 매물 신고</button> <span>신고수 : {{report[2]}} </span>
   </div> -->
     
     <!-- <div v-for="(a,i) in products" :key="i">
