@@ -12,7 +12,7 @@
       <input v-model="month">
       <p>{{month}}개월 선택함 : {{ oneroom[clicked].price * month}}원</p>
       <!-- <button @click="isOpen = false">닫기</button> -->
-      <!-- props로 받아온 데이터는 read-only! -->
+      <!-- props로 받아온 데이터는 read-only -->
       <button @click="closeModal">닫기</button>
     </div>
   </div>
